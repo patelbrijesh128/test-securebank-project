@@ -14,8 +14,7 @@ public final class BrowserManager {
     public static void start() {
         playwright = Playwright.create();
         boolean headed = Config.headed();
-        browser = playwright.chromium().launch(
-                new BrowserType.LaunchOptions().setHeadless(false));
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(2000));
         context = browser.newContext(new Browser.NewContextOptions()
                 .setViewportSize(1440, 900));
         page = context.newPage();
