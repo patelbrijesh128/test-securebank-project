@@ -20,7 +20,8 @@ jobs:
           java-version: "17"
           cache: maven
       - name: Install Playwright Chromium
-        run: mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=com.microsoft.playwright.CLI "-Dexec.args=install chromium"
+        run: mvn exec:java "-Dexec.classpathScope=test" "-Dexec.mainClass=com.microsoft.playwright.CLI" "-Dexec.args=install chromium"
+      - name: run test
         run: mvn clean test
       - name: Upload Cucumber report
         if: always()
